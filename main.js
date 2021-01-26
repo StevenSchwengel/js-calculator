@@ -14,6 +14,7 @@ var curn;
 var fcurn;
 var firstAmount = 0;
 
+var calculations = []
 
 var total;
 
@@ -49,6 +50,7 @@ function isNo(buttonValue) {
     console.log('operator to follow');
     console.log(initialOperator);
     initNum = initNum + 1;
+    calculations.push(buttonValue);
   }
 }
 
@@ -64,24 +66,28 @@ function isOperatora(buttonValue) {
       initNum = 0, firstAmount = 0, fcurn = 0;
       console.log(initNum, firstAmount, fcurn);
       console.log("c activated");
-
-
+      console.log(calculations);
+      let calculations = [];
+        console.log(calculations);
     }
 
 
     if (initNum === 1) {
       console.log('doing first Math push');
       firstAmount = curn;
+      calculations.push(curn);
       console.log(firstAmount);
     }
 
     if (initNum === 2) {
       console.log('doing second Math push');
       console.log(curn);
+      calculations.push(curn);
     }
 
     if (initNum >= 3) {
       firstAmount = total;
+      calculations.push(curn);
     }
   }
 
@@ -117,15 +123,23 @@ function isOperatora(buttonValue) {
     }
   }
 
-
   if (buttonValue === '=') {
+      calculate (firstAmount, fcurn);
+      calculations.push(buttonValue);
+    }
+
+  function calculate (firstAmount, fcurn){
     console.log('grand total');
     console.log(total);
     console.log(initNum, firstAmount, fcurn);
     initNum = 0, firstAmount = 0, fcurn = 0;
     console.log(initNum, firstAmount, fcurn);
     console.log("clear activated");
-    }
+    window.alert(total);
+    return total;
+  }
+
+
 
 }
 function addition(firstAmount, fcurn) {
